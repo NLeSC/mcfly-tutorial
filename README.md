@@ -10,3 +10,5 @@ See https://github.com/NLeSC/mcfly for installation instructions
 To install the package, run in the project directory:
 
 `pip install .`
+
+https://travis-ci.org/NLeSC/mcfly-tutorial.svg?branch=master
