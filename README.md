@@ -6,7 +6,7 @@
 
 ## Installation mcfly
 See https://github.com/NLeSC/mcfly for installation instructions
-
+(The tutorial is only tested in Python 3.5)
 
 ## Installation mcfly-tutorial
 To install the package, run in the project directory:
