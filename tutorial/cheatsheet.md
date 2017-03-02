@@ -6,11 +6,12 @@ Notebook tutorials can be found in the mcfly-tutorial [repository](https://githu
 
 
 ### Input data:
-*X_train* =>  N samples X N timesteps X  N channels
+*X_train* => N samples **x** N timesteps **x**  N channels
 
-*y_train_binary* => N samples X N classes
+*y_train_binary* => N samples **x** N classes
 
 ### Generate models:
+Generate one or multiple untrained Keras models with random hyperparameters.
 
 ```
 num_classes = y_train_binary.shape[1]
@@ -18,6 +19,7 @@ models = modelgen.generate_models(X_train.shape, number_of_classes=num_classes, 
 ```
 
 ### Train multiple models:
+Tries out a number of models on a subsample of the data, and outputs the best found architecture and hyperparameters.
 ```
 histories, val_accuracies, val_losses = find_architecture.train_models_on_samples(
   X_train, y_train_binary, X_val, y_val_binary,
