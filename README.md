@@ -9,6 +9,9 @@ See https://github.com/NLeSC/mcfly for installation instructions
 (The tutorial is only tested in Python 3.5)
 
 ## Installation mcfly-tutorial
-To install the package, run in the project directory:
+The tutorials are provided in Jupyter notebooks, which can be found in the folder notebooks.
+To use a notebook, first install Jupyter:
 
-`pip install .`
+`pip install jupyter`
+
+For more documentation on Jupyter: See the [official documentation](https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/)
