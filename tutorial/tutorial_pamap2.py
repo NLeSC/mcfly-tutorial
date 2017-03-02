@@ -5,16 +5,13 @@
  Example function calls in 'Tutorial mcfly on PAMAP2.ipynb'
 """
 import numpy as np
-from numpy import genfromtxt
 import pandas as pd
-import matplotlib.pyplot as plt
 from os import listdir
 import os.path
 import zipfile
-import keras
 from keras.utils.np_utils import to_categorical
-import sys
 import six.moves.urllib as urllib
+import json
 
 
 def split_activities(labels, X, exclude_activities, borders=10 * 100):
@@ -222,10 +219,11 @@ def fetch_data(directory_to_extract_to):
 def map_class(datasets_filled):
     ysetall = [set(np.array(data.activityID)) - set([0])
                for data in datasets_filled]
-    classlabels = list(set.union(*[set(y) for y in ysetall]))
-    nr_classes = len(classlabels)
-    mapclasses = {classlabels[i]: i for i in range(len(classlabels))}
-    return classlabels, nr_classes, mapclasses
+    class_ids = list(set.union(*[set(y) for y in ysetall]))
+    class_labels = [ACTIVITIES_MAP[i] for i in class_ids]
+    nr_classes = len(class_ids)
+    mapclasses = {class_ids[i]: i for i in range(len(class_ids))}
+    return class_labels, nr_classes, mapclasses
 
 
 def split_data(Xlists, ybinarylists, indices):
@@ -307,7 +305,10 @@ def preprocess(targetdir, outdatapath, columns_to_use, exclude_activities, fold,
     # Interpolate dataset to get same sample rate between channels
     datasets_filled = [d.interpolate() for d in datasets]
     # Create mapping for class labels
-    classlabels, nr_classes, mapclasses = map_class(datasets_filled)
+    class_labels, nr_classes, mapclasses = map_class(datasets_filled)
+    # Save class labels
+    with open(os.path.join(outdatapath, 'labels.json'), 'w') as fp:
+        json.dump(class_labels, fp)
     # Create input (x) and output (y) sets
     xall = [np.array(data[columns_to_use]) for data in datasets_filled]
     yall = [np.array(data.activityID) for data in datasets_filled]
@@ -426,7 +427,10 @@ def load_data(outputpath):
     y_val_binary = np.load(os.path.join(outputpath,  'y_val' + ext))
     x_test = np.load(os.path.join(outputpath, 'X_test' + ext))
     y_test_binary = np.load(os.path.join(outputpath,  'y_test' + ext))
-    return x_train, y_train_binary, x_val, y_val_binary, x_test, y_test_binary
+    with open(os.path.join(outputpath, 'labels.json'), 'r') as fn:
+        labels = json.load(fn)
+    return x_train, y_train_binary, x_val, y_val_binary, \
+           x_test, y_test_binary, labels
 
 
 def download_preprocessed_data(directory_to_extract_to):
@@ -440,17 +444,40 @@ def download_preprocessed_data(directory_to_extract_to):
         if not os.path.isfile(path_to_zip_file):
             print("Downloading data...")
             local_fn, headers = urllib.request.urlretrieve(
-                'https://zenodo.org/record/345082/files/data.zip',
+                'https://zenodo.org/record/345128/files/data02.zip',
                 filename=path_to_zip_file)
         else:
             print("Data already downloaded")
-
         # Extract the zip file
         with zipfile.ZipFile(path_to_zip_file, "r") as zip_ref:
             print("Extracting data...")
             zip_ref.extractall(directory_to_extract_to)
+            os.rename(os.path.join(directory_to_extract_to, 'data02'),
+                      os.path.join(directory_to_extract_to, 'data'))
         print("Done")
     else:
         print("Data already downloaded and extracted.")
 
     return data_path
+
+ACTIVITIES_MAP = {
+    0: 'no_activity',
+    1: 'lying',
+    2: 'sitting',
+    3: 'standing',
+    4: 'walking',
+    5: 'running',
+    6: 'cycling',
+    7: 'nordic_walking',
+    9: 'watching_tv',
+    10: 'computer_work',
+    11: 'car_driving',
+    12: 'ascending_stairs',
+    13: 'descending_stairs',
+    16: 'vaccuum_cleaning',
+    17: 'ironing',
+    18: 'folding_laundry',
+    19: 'house_cleaning',
+    20: 'playing_soccer',
+    24: 'rope_jumping'
+}
