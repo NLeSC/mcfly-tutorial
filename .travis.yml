@@ -18,8 +18,7 @@ before_install:
 - conda install -q pip openblas numpy scipy
 - "pip install -q nose"
 - "pip install 'coverage<4'"  # After 4, there is some issue when using python 3.2
-- git clone git@github.com:NLeSC/mcfly.git mcfly
-- "pip install -qr mcfly/requirements.txt"
+- "pip install mcfly"
 
 install:
 - "echo done"
