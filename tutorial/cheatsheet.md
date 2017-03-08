@@ -8,7 +8,7 @@ Notebook tutorials can be found in the mcfly-tutorial [repository](https://githu
 * [**accuracy**](https://en.wikipedia.org/wiki/Evaluation_of_binary_classifiers): proportion of correctly classified samples on all samples in a dataset
 * **convolutional filter**: a set of weights that are applied to neighbouring data points
 * [**convolutional layer**](http://ufldl.stanford.edu/tutorial/supervised/FeatureExtractionUsingConvolution/): type of network layer where a convolutional filter is slided over
-* **CNN**: Convolutional Neural Network, a deep learning network that includes of convolutional layers, and often combined with dense or fully connected layers.
+* **CNN**: Convolutional Neural Network, a deep learning network that includes convolutional layers, often combined with dense or fully connected layers.
 * **DeepConvLSTM**: A deep learning network that consists of convolutional layers and LSTM layers
 * **epoch**: One full pass through a dataset (all datapoints are seen once) in the process of training the weights of a network.
 * [**gradient descent**](http://cs231n.github.io/optimization-1/): Algorithm used to find the optimal weights for the nodes in the network. The algorithm looks for the weights corresponding to a minimum classification loss. The search space can be interpreted as a landscape where the lowest point is the optimum, hence the term 'descent'. In each step of the gradient descent algorithm, the weights are adjusted with a step in the direction of  the gradient ('slope') .
