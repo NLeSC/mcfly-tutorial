@@ -9,15 +9,15 @@ Notebook tutorials can be found in the mcfly-tutorial [repository](https://githu
 * **convolutional filter**: a set of weights that are applied to neighbouring data points
 * [**convolutional layer**](http://ufldl.stanford.edu/tutorial/supervised/FeatureExtractionUsingConvolution/): type of network layer where a convolutional filter is slided over
 * **CNN**: Convolutional Neural Network, a deep learning network that includes convolutional layers, often combined with dense or fully connected layers.
-* **DeepConvLSTM**: A deep learning network that consists of convolutional layers and LSTM layers
+* [**LSTM layer**](http://colah.github.io/posts/2015-08-Understanding-LSTMs/): Long Term Short Memory layer. This is a special type of Recurrent layer, that takes a sequence as input and outputs a sequence.
+* **DeepConvLSTM**: A deep learning network that includes both convolutional layers and LSTM layers
 * **epoch**: One full pass through a dataset (all datapoints are seen once) in the process of training the weights of a network.
-* [**gradient descent**](http://cs231n.github.io/optimization-1/): Algorithm used to find the optimal weights for the nodes in the network. The algorithm looks for the weights corresponding to a minimum classification loss. The search space can be interpreted as a landscape where the lowest point is the optimum, hence the term 'descent'. In each step of the gradient descent algorithm, the weights are adjusted with a step in the direction of  the gradient ('slope') .
+* **loss**: An indicator of overall classification error. More errors means greater loss. In mcfly we use [categorical cross entropy](http://cs231n.github.io/linear-classify/#softmax)
+* [**gradient descent**](http://cs231n.github.io/optimization-1/): Algorithm used to find the locally optimal weights for the nodes in the network. The algorithm iteratively improves the weights in order to minimize classification loss. The search space can be interpreted as a landscape where the lowest point is the optimum, hence the term 'descent'. In each step of the gradient descent algorithm, the weights are adjusted with a step in the direction of the gradient ('slope') .
 * **hyperparameters**: In mcfly, the hyperparameters are the architectural choices of the model (number of layers, lstm or convolutional layers, etc) and the learning rate and regulization rate.
 * **layer**: A deep learning network consists of multiple layers. The more layers, the deeper your network.
-* **learning rate**: the step size to take in the gradient descent algorithm
-* [**LSTM layer**](http://colah.github.io/posts/2015-08-Understanding-LSTMs/): Long Term Short Memory layer. This is a special type of Recurrent layer, that takes a sequence as input and outputs a sequence.
-* **Loss**: An indicator of classification error. In mcfly we use [categorical cross entropy](http://cs231n.github.io/linear-classify/#softmax)
-* **regularization rate**: how strongly the [L2 regularization](http://cs231n.github.io/neural-networks-2/#reg) is applied to avoid overfitting on train data.
+* **learning rate**: The step size to take in the gradient descent algorithm
+* **regularization rate**: How strongly the [L2 regularization](http://cs231n.github.io/neural-networks-2/#reg) is applied to avoid overfitting on train data.
 * **[validation set](https://en.wikipedia.org/wiki/Test_set#Validation_set)**: Part of the data that is kept apart to evaluate the performance of your model and choose hyper parameters
 
 
