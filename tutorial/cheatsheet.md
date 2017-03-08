@@ -1,4 +1,4 @@
-# mcfly Cheatsheet
+# mcfly cheatsheet
 
 Detailed documentation can be found in the mcfly [wiki](https://github.com/NLeSC/mcfly/wiki/Home---mcfly).
 
