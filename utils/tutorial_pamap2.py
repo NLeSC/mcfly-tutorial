@@ -216,8 +216,8 @@ def fetch_data(directory_to_extract_to):
     return targetdir
 
 
-def map_class(datasets_filled):
-    ysetall = [set(np.array(data.activityID)) - set([0])
+def map_class(datasets_filled, exclude_activities):
+    ysetall = [set(np.array(data.activityID)) - set(exclude_activities)
                for data in datasets_filled]
     class_ids = list(set.union(*[set(y) for y in ysetall]))
     class_labels = [ACTIVITIES_MAP[i] for i in class_ids]
@@ -305,7 +305,7 @@ def preprocess(targetdir, outdatapath, columns_to_use, exclude_activities, fold,
     # Interpolate dataset to get same sample rate between channels
     datasets_filled = [d.interpolate() for d in datasets]
     # Create mapping for class labels
-    class_labels, nr_classes, mapclasses = map_class(datasets_filled)
+    class_labels, nr_classes, mapclasses = map_class(datasets_filled, exclude_activities)
     # Save class labels
     with open(os.path.join(outdatapath, 'labels.json'), 'w') as fp:
         json.dump(class_labels, fp)
@@ -444,7 +444,7 @@ def download_preprocessed_data(directory_to_extract_to):
         if not os.path.isfile(path_to_zip_file):
             print("Downloading data...")
             local_fn, headers = urllib.request.urlretrieve(
-                'https://zenodo.org/record/345128/files/data02.zip',
+                'https://zenodo.org/record/834467/files/data03.zip',
                 filename=path_to_zip_file)
         else:
             print("Data already downloaded")
@@ -452,7 +452,7 @@ def download_preprocessed_data(directory_to_extract_to):
         with zipfile.ZipFile(path_to_zip_file, "r") as zip_ref:
             print("Extracting data...")
             zip_ref.extractall(directory_to_extract_to)
-            os.rename(os.path.join(directory_to_extract_to, 'data02'),
+            os.rename(os.path.join(directory_to_extract_to, 'data03'),
                       os.path.join(directory_to_extract_to, 'data'))
         print("Done")
     else:
