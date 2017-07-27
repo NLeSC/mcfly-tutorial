@@ -44,9 +44,9 @@ def split_activities(labels, X, exclude_activities, borders=10 * 100):
     # Also split up the data, and only keep the non-zero activities
     xysplit = [(X[s + borders:e - borders + 1, :], a)
                for s, e, a in zip(startpoints, endpoints, acts)
-               if a not in exclude_activities]
-    xysplit = [(X, y) for X, y in xysplit if len(X) > 0]
-    Xlist = [X for X, y in xysplit]
+               if a not in exclude_activities and e-borders+1>=0 and s+borders<tot_len]
+    xysplit = [(Xs, y) for Xs, y in xysplit if len(Xs) > 0]
+    Xlist = [Xs for Xs, y in xysplit]
     ylist = [y for X, y in xysplit]
     return Xlist, ylist
 
