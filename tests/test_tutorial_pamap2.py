@@ -17,9 +17,10 @@ class TutorialPAMAP2Suite(unittest.TestCase):
         labels = np.ones(3000)
         labels[range(150)] = 2
         X = np.ones((3000,9))
-        splittedX = tutorial_pamap2.split_activities(labels,X,[0])
-        test = splittedX[0][0].shape == (1150, 9)
-        assert test
+        splittedX, splitted_y = tutorial_pamap2.split_activities(labels,X,[0], borders=50)
+        assert splittedX[0].shape == (50, 9)
+        assert splittedX[1].shape == (2750, 9)
+
 
     def test_sliding_window(self):
         """ Test whether sliding_window correctly updates x_train to the
