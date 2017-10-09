@@ -35,19 +35,14 @@ class DataLoader:
         validation_y, test_X, test_y
         """
         multi_time_fallers, multi_time_fallers_controls, one_time_fallers, one_time_fallers_controls = self.read_ids_from_excel()
+        logger.debug('')
 
         if dataset_selection == ONE_TIME_FALL_DATASET:
             train_X, train_y, validation_X, validation_y, test_X, test_y = self.get_split_shuffled_data_set(
-                self.CONTROL_LABEL,
-                self.ONE_TIME_FALLER_LABEL,
-                one_time_fallers,
-                one_time_fallers_controls)
+                self.ONE_TIME_FALLER_LABEL, self.CONTROL_LABEL, one_time_fallers, one_time_fallers_controls)
         elif dataset_selection == MULTI_TIME_FALL_DATASET:
             train_X, train_y, validation_X, validation_y, test_X, test_y = self.get_split_shuffled_data_set(
-                self.CONTROL_LABEL,
-                self.MULTI_TIME_FALLER_LABEL,
-                multi_time_fallers,
-                multi_time_fallers_controls)
+                self.MULTI_TIME_FALLER_LABEL, self.CONTROL_LABEL, multi_time_fallers, multi_time_fallers_controls)
 
         logger.info('Loaded train samples with shape {} and train labels with shape {}.'
                     .format(train_X.shape, train_y.shape))
@@ -75,40 +70,43 @@ class DataLoader:
         return list(
             [int(sheet.cell_value(i, column)) for i in range(2, sheet.nrows) if sheet.cell_value(i, column) != ''])
 
-    def get_split_shuffled_data_set(self, control_label, label, one_time_fallers, one_time_fallers_controls):
-        indices = list(range(len(one_time_fallers)))
+    def get_split_shuffled_data_set(self, label, control_label, fallers, controls):
+        indices = list(range(len(fallers)))
         np.random.shuffle(indices)
 
         n_train_instances = int(self.train_fraction * len(indices))
         n_validation_instances = int(self.validation_fraction * len(indices))
-        train_X, train_y = self.get_data_set(one_time_fallers,
-                                             one_time_fallers_controls,
+        logger.info('Loading training data.')
+        train_X, train_y = self.get_data_set(fallers,
+                                             controls,
                                              indices[:n_train_instances],
                                              label,
                                              control_label)
-        validation_X, validation_y = self.get_data_set(one_time_fallers,
-                                                       one_time_fallers_controls,
+        logger.info('Loading validation data.')
+        validation_X, validation_y = self.get_data_set(fallers,
+                                                       controls,
                                                        indices[
                                                        n_train_instances:n_train_instances + n_validation_instances],
                                                        label,
                                                        control_label)
-        test_X, test_y = self.get_data_set(one_time_fallers,
-                                           one_time_fallers_controls,
+        logger.info('Loading test data.')
+        test_X, test_y = self.get_data_set(fallers,
+                                           controls,
                                            indices[n_train_instances + n_validation_instances:],
                                            label,
                                            control_label)
         return train_X, train_y, validation_X, validation_y, test_X, test_y
 
-    def get_data_set(self, one_time_fallers, one_time_fallers_controls, train_indices, label, control_label):
+    def get_data_set(self, fallers, controls, indices, label, control_label):
         train_instance_sets = []
         train_label_sets = []
-        for index in train_indices:
-            fall_id = one_time_fallers[index]
+        for index in indices:
+            fall_id = fallers[index]
             fall_X, fall_y = self.get_user_data_and_labels_for_id(fall_id, label)
             train_instance_sets.append(fall_X)
             train_label_sets.append(fall_y)
 
-            control_id = one_time_fallers_controls[index]
+            control_id = controls[index]
             control_X, control_y = self.get_user_data_and_labels_for_id(control_id, control_label)
             train_instance_sets.append(control_X)
             train_label_sets.append(control_y)
@@ -116,8 +114,8 @@ class DataLoader:
         train_labels = np.concatenate(train_label_sets)
         return train_set, train_labels
 
-    def get_user_data_and_labels_for_id(self, fall_id, label):
-        filename = 'Acc_Vel_gait_30sec_{}.mat'.format(fall_id)
+    def get_user_data_and_labels_for_id(self, id, label):
+        filename = 'Acc_Vel_gait_30sec_{}.mat'.format(id)
         logger.info('Processing file {}'.format(filename))
         user_data = self.load_user_data(filename)
         user_labels = [label for _ in user_data]
