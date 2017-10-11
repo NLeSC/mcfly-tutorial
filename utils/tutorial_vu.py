@@ -116,7 +116,9 @@ class DataLoader:
             train_instance_sets.append(control_X)
             train_label_sets.append(control_y)
         train_set = np.concatenate(train_instance_sets, axis=0)
+        np.random.shuffle(train_set)
         train_labels = np.concatenate(train_label_sets)
+        np.random.shuffle(train_labels)
         return train_set, train_labels
 
     def get_user_data_and_labels_for_id(self, id, label):
