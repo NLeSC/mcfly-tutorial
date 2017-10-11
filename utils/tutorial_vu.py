@@ -16,13 +16,18 @@ MULTI_TIME_FALL_DATASET = 'multi'  # Value to pass to load the multi time faller
 
 
 class DataLoader:
-    base_path = './Data espen/'
-    train_fraction = 0.80  # fraction of subjects used for train set. number of segments per subject is variable.
-    validation_fraction = 0.10  # fraction of subjects used for validation. number of segments per subject is variable.
 
     CONTROL_LABEL = 0
     ONE_TIME_FALLER_LABEL = 1
     MULTI_TIME_FALLER_LABEL = 2
+
+    def __init__(self, base_path = './Data espen/',
+                        train_fraction = 0.80,  # fraction of subjects used for train set. number of segments per subject is variable.
+                        validation_fraction = 0.10  # fraction of subjects used for validation. number of segments per subject is variable.
+                    ):
+        self.base_path = base_path
+        self.train_fraction = train_fraction
+        self.validation_fraction = validation_fraction
 
     def load(self, dataset_selection=ONE_TIME_FALL_DATASET):
         """
@@ -130,7 +135,7 @@ class DataLoader:
         return userdata
 
 
-def load_one_time_fall_dataset():
+def load_one_time_fall_dataset(base_path = './Data espen/'):
     """
     Loads a dataset containing the one time fallers and there matched controls. Fallers are distributed over train,
     validation and test set. Controls are kept in the same set as their matched subjects. All segments of a specific
@@ -139,10 +144,10 @@ def load_one_time_fall_dataset():
     label y.
     :return: train_X, train_y, validation_X, validation_y, test_X, test_y
     """
-    return DataLoader().load(dataset_selection=ONE_TIME_FALL_DATASET)
+    return DataLoader(base_path=base_path).load(dataset_selection=ONE_TIME_FALL_DATASET)
 
 
-def load_multi_time_fall_dataset():
+def load_multi_time_fall_dataset(base_path = './Data espen/'):
     """
     Loads a dataset containing the multiple time fallers and there matched controls. Fallers are distributed over
     train, validation and test set. Controls are kept in the same set as their matched subjects. All segments of a
@@ -151,4 +156,4 @@ def load_multi_time_fall_dataset():
     and the label y.
     :return: train_X, train_y, validation_X, validation_y, test_X, test_y
     """
-    return DataLoader().load(dataset_selection=MULTI_TIME_FALL_DATASET)
+    return DataLoader(base_path).load(dataset_selection=MULTI_TIME_FALL_DATASET)
