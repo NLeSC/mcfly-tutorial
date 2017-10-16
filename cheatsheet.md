@@ -1,4 +1,6 @@
-# mcfly [cheatsheet](https://github.com/NLeSC/mcfly-tutorial/blob/master/cheatsheet.md)
+# mcfly cheatsheet
+
+This document can be found at https://github.com/NLeSC/mcfly-tutorial/blob/master/cheatsheet.md
 
 Detailed documentation can be found in the mcfly [wiki](https://github.com/NLeSC/mcfly/wiki/Home---mcfly).
 
