@@ -82,6 +82,10 @@ class TutorialPAMAP2Suite(unittest.TestCase):
         test = y_test[0].shape == (12,) and x_test[0].shape == (200, 9)
         assert test
 
+    def test_load_model(self):
+        from keras.models import load_model
+        model = load_model('./notebooks/tutorial/model/model.h5')
+        assert len(model.layers) > 1
 
 if __name__ == '__main__':
     unittest.main()
