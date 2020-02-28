@@ -9,7 +9,7 @@ import pandas as pd
 from os import listdir
 import os.path
 import zipfile
-from keras.utils.np_utils import to_categorical
+from tensorflow.keras.utils import to_categorical
 import six.moves.urllib as urllib
 import json
 

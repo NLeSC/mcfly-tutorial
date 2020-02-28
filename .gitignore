@@ -1,6 +1,6 @@
 notebooks/tutorial/data/
+notebooks/tutorial/data.zip
 */.ipynb_checkpoints/
 */__pycache__/
 *.pyc
-
-
+notebooks/*/.ipynb_checkpoints/
