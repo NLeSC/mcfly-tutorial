@@ -83,7 +83,7 @@ class TutorialPAMAP2Suite(unittest.TestCase):
         assert test
 
     def test_load_model(self):
-        from keras.models import load_model
+        from tensorflow.keras.models import load_model
         model = load_model('./notebooks/tutorial/model/model.h5')
         assert len(model.layers) > 1
 
