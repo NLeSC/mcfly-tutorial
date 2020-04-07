@@ -44,7 +44,7 @@ def split_activities(labels, X, exclude_activities, borders=10 * 100):
     # Also split up the data, and only keep the non-zero activities
     xysplit = [(X[s + borders:e - borders + 1, :], a)
                for s, e, a in zip(startpoints, endpoints, acts)
-               if a not in exclude_activities and e-borders+1>=0 and s+borders<tot_len]
+               if a not in exclude_activities and e-borders+1 >= 0 and s+borders < tot_len]
     xysplit = [(Xs, y) for Xs, y in xysplit if len(Xs) > 0]
     Xlist = [Xs for Xs, y in xysplit]
     ylist = [y for X, y in xysplit]
@@ -73,7 +73,6 @@ def sliding_window(frame_length, step, Xsampleslist, ysampleslist):
         Samples to take sliding windows from
     ysampleslist
         Samples to take sliding windows from
-
     """
     Xsamples = []
     ysamples = []
@@ -330,9 +329,9 @@ def preprocess(targetdir, outdatapath, columns_to_use, exclude_activities, fold,
             x_train, y_train = sliding_window(frame_length, step, x_trainlist,
                                               y_trainlist)
             x_val, y_val = sliding_window(frame_length, step, x_vallist,
-                                              y_vallist)
+                                          y_vallist)
             x_test, y_test = sliding_window(frame_length, step, x_testlist,
-                                              y_testlist)
+                                            y_testlist)
 
         else:
             val_size, test_size = val_test_size
@@ -342,30 +341,31 @@ def preprocess(targetdir, outdatapath, columns_to_use, exclude_activities, fold,
                                   y_list)
             x_train, y_train, x_val, y_val, x_test, y_test = split_data_random(X, y, val_size, test_size)
 
-
         numpify_and_store(x_train, y_train, X_name='X_train', y_name='y_train',
-                            outdatapath=outdatapath, shuffle=True)
+                          outdatapath=outdatapath, shuffle=True)
         numpify_and_store(x_val, y_val, X_name='X_val', y_name='y_val',
-                            outdatapath=outdatapath, shuffle=False)
+                          outdatapath=outdatapath, shuffle=False)
         numpify_and_store(x_test, y_test, X_name='X_test', y_name='y_test',
-                            outdatapath=outdatapath, shuffle=False)
-    else :
+                          outdatapath=outdatapath, shuffle=False)
+    else:
         for i in range(len(Xlists)):
             X_i, y_i = split_data(Xlists, ybinarylists, i)
-            X, y = sliding_window(frame_length, step, X_i,
-                                              y_i)
+            X, y = sliding_window(frame_length, step, X_i, y_i)
             numpify_and_store(X, y, X_name='X_'+str(i), y_name='y_'+str(i),
-                            outdatapath=outdatapath, shuffle=True)
+                              outdatapath=outdatapath, shuffle=True)
 
 
     print('Processed data succesfully stored in ' + outdatapath)
     return None
 
 
-def fetch_and_preprocess(directory_to_extract_to, columns_to_use=None, output_dir='preprocessed', exclude_activities=[0], fold=False,
+def fetch_and_preprocess(directory_to_extract_to,
+                         columns_to_use=None,
+                         output_dir='preprocessed',
+                         exclude_activities=[0],
+                         fold=False,
                          val_test_size=None):
-    """
-    High level function to fetch_and_preprocess the PAMAP2 dataset
+    """High level function to fetch_and_preprocess the PAMAP2 dataset.
 
     Parameters
     ----------
@@ -403,8 +403,7 @@ def fetch_and_preprocess(directory_to_extract_to, columns_to_use=None, output_di
 
 
 def load_data(outputpath):
-    """ Function to load the numpy data as stored in directory
-    outputpath.
+    """Load the numpy data as stored in directory outputpath.
 
     Parameters
     ----------
@@ -434,6 +433,13 @@ def load_data(outputpath):
 
 
 def download_preprocessed_data(directory_to_extract_to):
+    """Load already preprocessed data from zenodo.
+
+    Args:
+    ----
+    directory_to_extract_to: str
+        Define directory to extract dataset to (if not yet present).
+    """
     data_path = os.path.join(directory_to_extract_to,
                              'data', 'PAMAP2', 'preprocessed')
 
@@ -459,6 +465,7 @@ def download_preprocessed_data(directory_to_extract_to):
         print("Data already downloaded and extracted.")
 
     return data_path
+
 
 ACTIVITIES_MAP = {
     0: 'no_activity',
