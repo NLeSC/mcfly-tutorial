@@ -435,7 +435,7 @@ def load_data(outputpath):
 
 def download_preprocessed_data(directory_to_extract_to):
     data_path = os.path.join(directory_to_extract_to,
-                             'data/PAMAP2/preprocessed')
+                             'data', 'PAMAP2', 'preprocessed')
 
     if not os.path.isdir(data_path):
         path_to_zip_file = os.path.join(directory_to_extract_to, 'data.zip')

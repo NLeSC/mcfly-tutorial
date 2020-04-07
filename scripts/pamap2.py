@@ -1,9 +1,9 @@
-'''
-Script do do a model comparison
+"""
+Script to do a model comparison
 Run this script from the root of repository:
 
 `python scripts/pamap2.py`
-'''
+"""
 import sys
 import os
 import numpy as np
