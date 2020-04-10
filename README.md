@@ -9,7 +9,7 @@ This repository contains notebooks that show how to use the [mcfly](https://gith
 The tutorial can be found in the notebook [notebooks/tutorial/tutorial.ipynb](https://github.com/NLeSC/mcfly-tutorial/blob/master/notebooks/tutorial/tutorial.ipynb). This tutorial will let you train deep learning models with mcfly on the [PAMAP2 dataset for activity recognition](https://archive.ics.uci.edu/ml/datasets/PAMAP2+Physical+Activity+Monitoring).
 
 Prerequisites:
-- Python 2.7, 3.5 or 3.6
+- Python 3.5, 3.6, or 3.7
 - Have the following python packages installed:
   - mcfly
   - jupyter
