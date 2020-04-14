@@ -3,31 +3,31 @@ dist: trusty
 sudo: false
 
 python:
-- "3.5"
-- "3.6"
-- "3.7"
+- PYTHON_VERSION=3.5
+- PYTHON_VERSION=3.6
+- PYTHON_VERSION=3.7
 
 before_install:
-- wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
+- wget "http://repo.continuum.io/miniconda/Miniconda$MINCONDA_PYTHON_VERSION-latest-Linux-x86_64.sh" -O miniconda.sh;
 - bash miniconda.sh -b -p $HOME/miniconda
 - export PATH="$HOME/miniconda/bin:$PATH"
-  - conda config --set always_yes yes
-  - conda update -q conda
-  - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION pip numpy
-  - source activate test-environment
-  - conda install -q pip openblas numpy scipy pandas
-  - "pip install --upgrade pip"
-  - "pip install -q nose"
-  - "pip install coverage"
-  - "pip install mcfly"
+- conda config --set always_yes yes
+- conda update -q conda
+- conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION pip numpy
+- source activate test-environment
+- conda install -q pip openblas numpy scipy pandas
+- "pip install --upgrade pip"
+- "pip install -q nose"
+- "pip install coverage"
+- "pip install mcfly"
 
 install:
-  - "echo done"
+- "echo done"
 
 # command to run tests, e.g. python setup.py test
 script:
-  - nosetests
+- nosetests
 
 after_script:
-  - "pip install scrutinizer-ocular"
-  - "ocular"
+- "pip install scrutinizer-ocular"
+- "ocular"
