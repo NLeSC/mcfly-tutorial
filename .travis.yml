@@ -1,28 +1,13 @@
-language: generic
+language: python
 dist: trusty
 sudo: false
 
-os:
-  - linux
-  - osx
-
-env:
-  matrix:
-    - PYTHON_VERSION=3.5
-    - PYTHON_VERSION=3.6
-    - PYTHON_VERSION=3.7
-  global:
-    - MINCONDA_VERSION="latest"
-    - MINCONDA_LINUX="Linux-x86_64"
+python:
+- "3.5"
+- "3.6"
 
 before_install:
-- MINCONDA_PYTHON_VERSION=3;
-- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
-    MINCONDA_OS=$MINCONDA_LINUX;
-  elif [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
-    MINCONDA_OS=$MINCONDA_OSX;
-  fi
-- wget "http://repo.continuum.io/miniconda/Miniconda$MINCONDA_PYTHON_VERSION-$MINCONDA_VERSION-$MINCONDA_OS.sh" -O miniconda.sh;
+- wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
 - bash miniconda.sh -b -p $HOME/miniconda
 - export PATH="$HOME/miniconda/bin:$PATH"
 - conda config --set always_yes yes
@@ -30,9 +15,9 @@ before_install:
 - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION pip numpy
 - source activate test-environment
 - conda install -q pip openblas numpy scipy pandas
-- "pip install --upgrade pip"
 - "pip install -q nose"
 - "pip install coverage"
+- "pip install --upgrade pip"
 - "pip install mcfly"
 
 install:
