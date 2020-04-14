@@ -32,9 +32,8 @@ before_install:
   - source activate test-environment
   - "pip install --upgrade pip"
   - "pip install 'coverage<4'"  # After 4, there is some issue when using python 3.2
-- "pip install mcfly"
-
-  - "conda list" # Show the package versions (for debugging)
+  - "pip install mcfly"
+  - "conda list"  # Show the package versions (for debugging)
 
 install:
   - "pip install ."
