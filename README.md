@@ -6,7 +6,11 @@
 
 This repository contains notebooks that show how to use the [mcfly](https://github.com/NLeSC/mcfly) software. Mcfly is deep learning tool for time series classification..
 
-The tutorial can be found in the notebook [notebooks/tutorial/tutorial.ipynb](https://github.com/NLeSC/mcfly-tutorial/blob/master/notebooks/tutorial/tutorial.ipynb). This tutorial will let you train deep learning models with mcfly on the [PAMAP2 dataset for activity recognition](https://archive.ics.uci.edu/ml/datasets/PAMAP2+Physical+Activity+Monitoring).
+## Tutorials
+Currently we here offer two tutorials. 
+Our main tutorial can be found in the notebook [notebooks/tutorial/tutorial.ipynb](https://github.com/NLeSC/mcfly-tutorial/blob/master/notebooks/tutorial/tutorial.ipynb). This tutorial will let you train deep learning models with mcfly on the [PAMAP2 dataset for activity recognition](https://archive.ics.uci.edu/ml/datasets/PAMAP2+Physical+Activity+Monitoring).  
+
+A comparable, slightly quicker tutorial can be found in the notebook [notebooks/tutorial/tutorial_quick.ipynb](https://github.com/NLeSC/mcfly-tutorial/blob/master/notebooks/tutorial/tutorial_quick.ipynb). This tutorial will let you train deep learning models with mcfly on the [RacketSports dataset for activity recognition](http://www.timeseriesclassification.com/description.php?Dataset=RacketSports).
 
 Prerequisites:
 - Python 3.5, 3.6, or 3.7
