@@ -4,7 +4,7 @@
 
 [![Build Status](https://travis-ci.org/NLeSC/mcfly-tutorial.svg?branch=master)](https://travis-ci.org/NLeSC/mcfly-tutorial)
 
-This repository contains notebooks that show how to use the [mcfly](https://github.com/NLeSC/mcfly) software. Mcfly is deep learning tool for time series classification..
+This repository contains notebooks that show how to use the [mcfly](https://github.com/NLeSC/mcfly) software. Mcfly is a deep learning tool for time series classification.
 
 ## Tutorials
 Currently we here offer two tutorials. 
@@ -15,9 +15,17 @@ A comparable, slightly quicker tutorial can be found in the notebook [notebooks/
 Prerequisites:
 - Python 3.5, 3.6, or 3.7
 - Have the following python packages installed:
-  - mcfly
   - jupyter
- 
+  - mcfly
+
+## Installation jupyter
+The tutorials are provided in Jupyter notebooks, which can be found in the folder notebooks.
+To use a notebook, first install Jupyter, for instance through pypi:
+
+`pip install jupyter`
+
+This also installs other dependencies like Matplotlib and Numpy.
+For more documentation on Jupyter: See the [official documentation](https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/).
 
 ## Installation mcfly
 Mcfly can be installed through pypi:
@@ -26,13 +34,6 @@ Mcfly can be installed through pypi:
 
 See https://github.com/NLeSC/mcfly for alternative installation instructions
 
-## Installation jupyter
-The tutorials are provided in Jupyter notebooks, which can be found in the folder notebooks.
-To use a notebook, first install Jupyter:
-
-`pip install jupyter`
-
-For more documentation on Jupyter: See the [official documentation](https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/)
 
 ## Installation on Windows
 Windows users can best use [Anaconda 3.6](https://www.anaconda.com/download). 
