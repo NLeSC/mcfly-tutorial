@@ -18,6 +18,7 @@ Prerequisites:
   - mcfly
   - jupyter
   - pandas
+  - matplotlib
  
 
 ## Installation mcfly
