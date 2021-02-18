@@ -22,10 +22,10 @@ jobs:
         run: |
           which python
           python --version
-      - name: Build package and create dev environment
+      - name: Install mcfly
         run: |
           python -m pip install --upgrade pip
-          pip install -e .[dev]
+          pip install mcfly
       - name: Show pip list
         run: |
           pip list
@@ -59,10 +59,10 @@ jobs:
         run: |
           which python
           python --version
-      - name: Install dependencies
+      - name: Install mcfly
         run: |
           python -m pip install --upgrade pip
-          pip install -e .[dev]
+          pip install mcfly
       - name: Show pip list
         run: |
           pip list
