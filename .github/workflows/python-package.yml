@@ -32,7 +32,7 @@ jobs:
       - name: Check style against standards using prospector (only warn for now, but never fail)
         shell: bash -l {0}
         run: prospector --profile linter_profile -o grouped -o pylint:pylint-report.txt --zero-exit
-      - name: Run unit test / Test coverage with Scrutinizer
+      - name: Run unit tests
         run: |
           nosetests
           
@@ -69,6 +69,3 @@ jobs:
       - name: Run unit tests
         run: |
           nosetests
-      - name: Check style against standards using prospector (only warn for now, but never fail)
-        shell: bash -l {0}
-        run: prospector --profile linter_profile -o grouped -o pylint:pylint-report.txt --zero-exit
