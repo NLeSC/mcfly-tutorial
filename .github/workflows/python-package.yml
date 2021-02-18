@@ -22,10 +22,10 @@ jobs:
         run: |
           which python
           python --version
-      - name: Install mcfly
+      - name: Install dependiencies
         run: |
           python -m pip install --upgrade pip
-          pip install mcfly
+          pip install mcfly prospector
       - name: Show pip list
         run: |
           pip list
@@ -59,10 +59,10 @@ jobs:
         run: |
           which python
           python --version
-      - name: Install mcfly
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install mcfly
+          pip install mcfly prospector
       - name: Show pip list
         run: |
           pip list
