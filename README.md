@@ -2,7 +2,7 @@
   <img src="mcflylogo.png" width="200"/>
 </p>
 
-[![Build Status](https://travis-ci.org/NLeSC/mcfly-tutorial.svg?branch=master)](https://travis-ci.org/NLeSC/mcfly-tutorial)
+[![CI Build](https://github.com/NLeSC/mcfly-tutorial/workflows/CI%20Build/badge.svg)](https://github.com/NLeSC/mcfly-tutorial/actions)
 
 This repository contains notebooks that show how to use the [mcfly](https://github.com/NLeSC/mcfly) software. Mcfly is deep learning tool for time series classification..
 
