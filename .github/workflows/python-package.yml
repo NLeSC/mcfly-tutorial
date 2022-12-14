@@ -30,7 +30,7 @@ jobs:
       - name: Install dependiencies
         run: |
           python3 -m pip install --upgrade pip setuptools wheel
-          python3 -m pip install mcfly[dev] pandas
+          python3 -m pip install mcfly prospector pytest pandas
       - name: Check style against standards using prospector (only warn for now, but never fail)
         shell: bash -l {0}
         run: prospector --profile linter_profile -o grouped -o pylint:pylint-report.txt --zero-exit
