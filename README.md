@@ -13,14 +13,24 @@ Our main tutorial can be found in the notebook [notebooks/tutorial/tutorial.ipyn
 A comparable, slightly quicker tutorial can be found in the notebook [notebooks/tutorial/tutorial_quick.ipynb](https://github.com/NLeSC/mcfly-tutorial/blob/master/notebooks/tutorial/tutorial_quick.ipynb). This tutorial will let you train deep learning models with mcfly on the [RacketSports dataset for activity recognition](http://www.timeseriesclassification.com/description.php?Dataset=RacketSports).
 
 Prerequisites:
-- Python 3.6, 3.7 or 3.8
+- Python 3.7 and above
 - Have the following python packages installed:
   - mcfly
   - jupyter
   - pandas
   - matplotlib
- 
+  - scipy
+  - numpy
 
+## Installation
+
+ ```shell
+python3 -m venv env
+. env/bin/activate
+pip install --upgrade pip setuptools
+pip install -r requirements.txt
+```
+ 
 ## Installation mcfly
 Mcfly can be installed through pypi:
 
