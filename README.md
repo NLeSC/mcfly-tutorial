@@ -4,7 +4,7 @@
 
 [![CI Build](https://github.com/NLeSC/mcfly-tutorial/workflows/CI%20Build/badge.svg)](https://github.com/NLeSC/mcfly-tutorial/actions)
 
-This repository contains notebooks that show how to use the [mcfly](https://github.com/NLeSC/mcfly) software. Mcfly is deep learning tool for time series classification..
+This repository contains notebooks that show how to use the [mcfly](https://github.com/NLeSC/mcfly) software. Mcfly is deep learning tool for time series classification.
 
 ## Tutorials
 Currently we offer two tutorials here. 
@@ -14,7 +14,7 @@ A comparable, slightly quicker tutorial can be found in the notebook [notebooks/
 
 Prerequisites:
 - Python 3.7 and above
-- Have the following python packages installed:
+- The following python packages have to be installed (also specified in requirements.txt file):
   - mcfly
   - jupyter
   - pandas
@@ -30,33 +30,9 @@ python3 -m venv env
 pip install --upgrade pip setuptools
 pip install -r requirements.txt
 ```
- 
-## Installation mcfly
-Mcfly can be installed through pypi:
-
-`pip install mcfly`
-
-See https://github.com/NLeSC/mcfly for alternative installation instructions
-
-## Installation jupyter
-The tutorials are provided in Jupyter notebooks, which can be found in the folder notebooks.
-To use a notebook, first install Jupyter:
-
-`pip install jupyter`
-
-For more documentation on Jupyter: See the [official documentation](https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/)
-
-## Installation on Windows
-Windows users can best use [Anaconda 3.6](https://www.anaconda.com/download). 
-* Create a new environment (Environments > Create…)
-* Click the play button next to your environment and select ‘Open terminal’
-* Type `conda install numpy scipy jupyter` and then `pip install mcfly`
-* Click the play button again and select ‘open with Jupyter notebook’
-* Navigate to the directory where you cloned this repository, where you can open the notebooks
-
 
 ## Running the notebooks
-The tutorials can be run using Jupyter. From the tutorial root folder run:
+The tutorials can be run using Jupyter notebook. From the tutorial root folder run:
 
 `jupyter notebook`
 
