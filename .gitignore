@@ -4,3 +4,4 @@ notebooks/tutorial/data.zip
 */__pycache__/
 *.pyc
 notebooks/*/.ipynb_checkpoints/
+env
