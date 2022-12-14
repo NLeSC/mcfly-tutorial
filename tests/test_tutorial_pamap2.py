@@ -1,7 +1,6 @@
 from utils import tutorial_pamap2
 import numpy as np
 import pandas as pd
-from os import listdir
 import os.path
 import unittest
 
