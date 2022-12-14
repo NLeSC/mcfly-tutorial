@@ -1,0 +1,6 @@
+mcfly
+matplotlib
+pandas
+jupyter
+numpy
+scipy
